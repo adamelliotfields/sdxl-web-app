@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/typescript-node:20
+FROM mcr.microsoft.com/devcontainers/typescript-node:22
 
 # add bun bin to path
 ENV PATH "/home/node/.bun/bin:${PATH}"
@@ -7,7 +7,7 @@ ENV PATH "/home/node/.bun/bin:${PATH}"
 USER 1000:1000
 
 # workdir
-WORKDIR /workspaces/gen
+WORKDIR /workspaces/sdxl-web-app
 
 # install bun
 RUN curl -fsSL https://bun.sh/install | bash

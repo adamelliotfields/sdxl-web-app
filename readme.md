@@ -1,45 +1,30 @@
-# gen
+# sdxl-web-app
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/adamelliotfields/gen?devcontainer_path=.devcontainer/devcontainer.json&machine=basicLinux32gb)
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://pr.new/adamelliotfields/gen)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/adamelliotfields/sdxl-web-app?devcontainer_path=.devcontainer/devcontainer.json&machine=basicLinux32gb)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://pr.new/adamelliotfields/sdxl-web-app)
 
-My image generation web UI, hosted on GitHub Pages: [gen.aef.me](https://gen.aef.me)
+A React app I made before I learned [Diffusers](https://github.com/huggingface/diffusers). It uses the Hugging Face [Inference API](https://huggingface.co/docs/api-inference/en/index) to generate images with [Stable Diffusion XL](https://stability.ai/news/stable-diffusion-sdxl-1-announcement).
 
-## Features
+That said, I don't plan on doing much more with it.
 
-- [x] Stable Diffusion XL text-to-image via 🤗 [Inference API](https://huggingface.co/docs/api-inference/en/index)
-- [x] Supports different image sizes, guidance scale, steps, and negative prompt
-- [x] Examples!
-
-## TODO
-
-- [ ] Embed mode like [JupyterLite REPL](https://jupyter.org/try-jupyter/repl/?kernel=python)
-- [ ] Multiple backends (stability.ai, fal.ai, etc)
-- [ ] More models
-- [ ] Image-to-image tasks
-- [ ] API key input
+> [!NOTE]  
+> Check out my [Spaces](https://huggingface.co/docs/hub/spaces) for Stable Diffusion [1.5](https://huggingface.co/spaces/adamelliotfields/diffusion) and [XL](https://huggingface.co/spaces/adamelliotfields/diffusion-xl). They run inference on serverless GPUs, support multiple models, and have more features like [Compel](https://github.com/damian0815/compel), [IP-Adapter](https://github.com/tencent-ailab/IP-Adapter), and [ControlNet](https://github.com/lllyasviel/ControlNet). They also have built-in upscaling with [Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN). If you have a Nvidia GPU, you can run them locally.
 
 ## Usage
 
+Set `VITE_HF_TOKEN` to your Hugging Face API key:
+
 ```sh
-# install bun
-export PATH="${HOME}/.bun/bin:${PATH}"
-curl -fsSL https://bun.sh/install | bash
+export VITE_HF_TOKEN='hf_...'
 
-# install deps
-bun install
+# or
 
-# start the dev server
-bun start
+echo 'hf_...' > .env.local
 ```
 
-## Secrets
+Then run the app:
 
-- `VITE_FAL_URL` - Alternate URL (proxy) for the Fal.ai API (default: `https://fal.run`)
-- `VITE_FAL_KEY` - Fal.ai API key (default: `undefined`)
-- `VITE_HF_URL` - Alternate URL (proxy) for the Hugging Face API (default: `https://api-inference.huggingface.co`)
-- `VITE_HF_KEY` - Hugging Face API key (default: `undefined`)
-- `VITE_STABILITY_URL` - Alternate URL (proxy) for the Stability.ai API (default: `https://api.stability.ai`)
-- `VITE_STABILITY_KEY` - Stability.ai API key (default: `undefined`)
-
-See [`.env`](./.env) for app settings. You can put the above in `.env.local` during development.
+```sh
+bun install
+bun start
+```

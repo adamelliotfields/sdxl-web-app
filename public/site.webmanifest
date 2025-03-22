@@ -1,7 +1,7 @@
 {
-  "name": "Gen",
-  "short_name": "Gen",
-  "description": "Imagine new images with Stable Diffusion XL.",
+  "name": "SDXL Web App",
+  "short_name": "SDXL",
+  "description": "Imagine new images with Stable Diffusion XL",
   "background_color": "#000000",
   "theme_color": "#000000",
   "display": "fullscreen",

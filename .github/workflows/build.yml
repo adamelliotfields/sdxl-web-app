@@ -20,7 +20,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Bun
-        uses: oven-sh/setup-bun@v1
+        uses: oven-sh/setup-bun@v2
       - name: Install deps
         run: bun install --frozen-lockfile
       - name: Lint with Biome
@@ -28,25 +28,21 @@ jobs:
       - name: Build with Vite
         run: bun run build
         env:
-          VITE_FAL_URL: ${{ secrets.VITE_FAL_URL }}
-          VITE_FAL_KEY: ${{ secrets.VITE_FAL_KEY }}
-          VITE_HF_URL: ${{ secrets.VITE_HF_URL }}
-          VITE_HF_KEY: ${{ secrets.VITE_HF_KEY }}
-          VITE_STABILITY_URL: ${{ secrets.VITE_STABILITY_URL }}
-          VITE_STABILITY_KEY: ${{ secrets.VITE_STABILITY_KEY }}
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist/
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    needs: build
-    if: github.event_name == 'push' || (github.event.pull_request.merged == true && github.base_ref == 'main')
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          VITE_HF_TOKEN: ${{ secrets.VITE_HF_TOKEN }}
+      # - name: Upload artifact
+      #   uses: actions/upload-pages-artifact@v3
+      #   with:
+      #     path: ./dist/
+
+  # deploy:
+  #   name: Deploy
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   if: github.event_name == 'push' || (github.event.pull_request.merged == true && github.base_ref == 'main')
+  #   environment:
+  #     name: github-pages
+  #     url: ${{ steps.deployment.outputs.page_url }}
+  #   steps:
+  #     - name: Deploy to GitHub Pages
+  #       id: deployment
+  #       uses: actions/deploy-pages@v4

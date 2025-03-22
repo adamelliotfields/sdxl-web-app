@@ -1,6 +1,4 @@
-import falIcon from './assets/fal.png'
 import huggingFaceIcon from './assets/huggingface.png'
-import stabilityIcon from './assets/stability.png'
 
 // available settings for server (none for just server and prompt)
 export enum Setting {
@@ -26,9 +24,6 @@ export interface Config {
   servers: Server[]
 }
 
-// const falModel = 'fal-ai/fast-sdxl'
-// const stabilityModel = 'stable-diffusion-xl-1024-v1-0'
-
 const config: Config = {
   servers: [
     {
@@ -44,18 +39,6 @@ const config: Config = {
         Setting.GUIDANCE_SCALE,
         Setting.INFERENCE_STEPS
       ]
-    },
-    {
-      name: 'Fal.ai (Coming Soon)',
-      icon: falIcon,
-      disabled: true,
-      models: []
-    },
-    {
-      name: 'Stability.ai (Coming Soon)',
-      icon: stabilityIcon,
-      disabled: true,
-      models: []
     }
   ]
 }
