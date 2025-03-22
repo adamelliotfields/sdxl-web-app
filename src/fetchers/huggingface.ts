@@ -1,6 +1,6 @@
 import axios from 'redaxios'
 
-const { VITE_HF_KEY, VITE_HF_URL, VITE_SECRET } = import.meta.env
+const { VITE_HF_TOKEN } = import.meta.env
 
 export interface HuggingFaceConfig {
   model: string
@@ -21,11 +21,10 @@ export default async function huggingface({
   guidance_scale,
   num_inference_steps
 }: HuggingFaceConfig) {
-  const url = VITE_HF_URL ?? 'https://api-inference.huggingface.co'
-  const endpoint = `${url}/models/${model}`
+  const url = `https://api-inference.huggingface.co/models/${model}`
 
   return axios.post(
-    endpoint,
+    url,
     {
       inputs: prompt,
       parameters: {
@@ -39,13 +38,12 @@ export default async function huggingface({
     {
       responseType: 'blob',
       headers: {
-        Authorization: VITE_HF_KEY
-          ? `Bearer ${VITE_HF_KEY}`
+        Authorization: VITE_HF_TOKEN
+          ? `Bearer ${VITE_HF_TOKEN}`
           : (undefined as unknown as string),
         'Content-Type': 'application/json',
         'X-Use-Cache': 'false',
-        'X-Wait-For-Model': 'true',
-        'X-Api-Key': VITE_SECRET ?? undefined
+        'X-Wait-For-Model': 'true'
       }
     }
   )
