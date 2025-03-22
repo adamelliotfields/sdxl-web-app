@@ -3,6 +3,8 @@
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/adamelliotfields/sdxl-web-app?devcontainer_path=.devcontainer/devcontainer.json&machine=basicLinux32gb)
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://pr.new/adamelliotfields/sdxl-web-app)
 
+![Screenshot](./screenshot.jpg)
+
 A React app I made before I learned [Diffusers](https://github.com/huggingface/diffusers). It uses the Hugging Face [Inference API](https://huggingface.co/docs/api-inference/en/index) to generate images with [Stable Diffusion XL](https://stability.ai/news/stable-diffusion-sdxl-1-announcement).
 
 That said, I don't plan on doing much more with it.
@@ -19,7 +21,7 @@ export VITE_HF_TOKEN='hf_...'
 
 # or
 
-echo 'hf_...' > .env.local
+echo "VITE_HF_TOKEN=$HF_TOKEN" > .env.local
 ```
 
 Then run the app:
